@@ -1,8 +1,12 @@
+import { useBalanceContext } from "../hooks/BalanceContextHook";
+
 const Balance = () => {
+  const { total } = useBalanceContext();
+
   return (
-    <header className="bg-amber-200 w-2xs h-96">
-      <h1>Hello User!</h1>
-      <h3>$$$$$$$$$</h3>
+    <header className=" h-80">
+      <h1 className="text-8xl">Hello User!</h1>
+      <h3 className="text-4xl">{`$ ${total}`}</h3>
     </header>
   );
 };
