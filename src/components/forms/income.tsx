@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { BalanceInput } from "../../interfaces/forms";
+import { BalanceInput, MainForm } from "../../interfaces/forms";
 import { useBalanceContext } from "../../hooks/BalanceContextHook";
 
 const Income = () => {
   const [inputType, setInputType] = useState<BalanceInput>(BalanceInput.income);
+  const [formData, setFormData] = useState<MainForm>({ inputData: "" });
   const { updateBalance } = useBalanceContext();
 
   const handleClick = (value: BalanceInput) => {
@@ -11,10 +12,13 @@ const Income = () => {
     else setInputType(BalanceInput.expense);
   };
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const test = 5000;
-    updateBalance(test);
+    updateBalance(parseInt(formData.inputData, 10), inputType);
   };
 
   return (
@@ -36,17 +40,18 @@ const Income = () => {
         </button>
       </div>
       <form className="border p-6 w-fit mx-auto" onSubmit={handleSubmit}>
-        {inputType === BalanceInput.income ? (
-          <div>
-            <label htmlFor="income">Enter amount</label>
-            <input type="text" placeholder=" $ income " name="income" />
-          </div>
-        ) : (
-          <div>
-            <label htmlFor="expense">Enter amount</label>
-            <input type="text" placeholder=" $ expense " name="expense" />
-          </div>
-        )}
+        <div>
+          <label htmlFor="inputData">Enter amount</label>
+          <input
+            type="text"
+            placeholder=" $ 00.00 "
+            name="inputData"
+            id="inputData"
+            value={formData.inputData}
+            onChange={handleChange}
+          />
+        </div>
+
         <button>Enter</button>
       </form>
     </div>

@@ -1,5 +1,6 @@
 import "./App.css";
 import Balance from "./components/Balance";
+import BalanceChart from "./components/BalanceChart";
 import Income from "./components/forms/income";
 import { BalanceProvider } from "./helpers/context/BalanceContext";
 
@@ -9,6 +10,7 @@ function App() {
       <BalanceProvider>
         <Balance />
         <Income />
+        <BalanceChart />
       </BalanceProvider>
     </div>
   );

@@ -3,6 +3,10 @@ export interface LoginForm {
   password: string;
 }
 
+export interface MainForm {
+  inputData: string;
+}
+
 export enum BalanceInput {
   income = "income",
   expense = "expense",
