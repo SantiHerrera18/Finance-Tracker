@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BalanceInput, MainForm } from "../../interfaces/forms";
 import { useBalanceContext } from "../../hooks/BalanceContextHook";
+import Dropdown from "../CategorieSelect";
 
 const Income = () => {
   const [inputType, setInputType] = useState<BalanceInput>(BalanceInput.income);
@@ -18,6 +19,8 @@ const Income = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    console.log(formData);
+
     updateBalance(parseInt(formData.inputData, 10), inputType);
   };
 
@@ -39,9 +42,13 @@ const Income = () => {
           Expenses
         </button>
       </div>
-      <form className="border p-6 w-fit mx-auto" onSubmit={handleSubmit}>
+      <form
+        className="border p-6 w-fit mx-auto flex flex-col"
+        onSubmit={handleSubmit}
+      >
         <div>
           <label htmlFor="inputData">Enter amount</label>
+          <p>{`This is ${inputType}`}</p>
           <input
             type="text"
             placeholder=" $ 00.00 "
@@ -51,7 +58,7 @@ const Income = () => {
             onChange={handleChange}
           />
         </div>
-
+        <Dropdown />
         <button>Enter</button>
       </form>
     </div>
