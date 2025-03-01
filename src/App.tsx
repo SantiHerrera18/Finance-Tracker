@@ -3,6 +3,7 @@ import BalanceChart from "./components/BalanceChart";
 
 import Income from "./components/forms/income";
 import CustomHeader from "./components/Header";
+import IncomeAndExpenses from "./components/Income_and_expenses";
 import { BalanceProvider } from "./helpers/context/BalanceContext";
 
 function App() {
@@ -10,9 +11,9 @@ function App() {
     <div>
       <BalanceProvider>
         <CustomHeader />
-
         <BalanceChart />
         <Income />
+        <IncomeAndExpenses />
       </BalanceProvider>
     </div>
   );

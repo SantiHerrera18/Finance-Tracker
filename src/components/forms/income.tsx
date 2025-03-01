@@ -20,6 +20,7 @@ const Income = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log(formData);
+    setFormData({ inputData: "" });
 
     updateBalance(parseInt(formData.inputData, 10), inputType);
   };
@@ -58,7 +59,7 @@ const Income = () => {
             onChange={handleChange}
           />
         </div>
-        <Dropdown />
+        <Dropdown inputType={inputType} />
         <button>Enter</button>
       </form>
     </div>

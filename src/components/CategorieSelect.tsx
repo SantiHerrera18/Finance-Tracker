@@ -1,10 +1,15 @@
 import { items } from "@/helpers/categories";
 import capitalizeFirstLetter from "@/helpers/FirstToUpperCase";
+import { BalanceInput } from "@/interfaces/forms";
 import { useState } from "react";
 
-const Dropdown = () => {
+const Dropdown: React.FC<{ inputType: BalanceInput }> = ({ inputType }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
+
+  const filteredCategories = items.filter((item) => {
+    return item.categorieType === inputType;
+  });
 
   const handleSelect = (item: string) => {
     setSelectedItem(item);
@@ -25,7 +30,7 @@ const Dropdown = () => {
       {/* Dropdown Menu */}
       {isOpen && (
         <ul className="absolute left-0 mt-2 w-full border rounded shadow-md">
-          {items.map((item, index) => (
+          {filteredCategories.map((item, index) => (
             <li
               key={index}
               onClick={() => handleSelect(item.name)}

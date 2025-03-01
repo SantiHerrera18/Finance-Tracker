@@ -10,14 +10,23 @@ export const BalanceProvider = ({
   children: React.ReactNode;
 }) => {
   const [total, setTotal] = useState(80000);
+  const [incomes, setIncomes] = useState<number>(0);
+  const [expenses, setExpenses] = useState<number>(0);
 
   const updateBalance = (value: number, input: BalanceInput) => {
-    if (input === BalanceInput.income) setTotal(total + value);
-    else setTotal(total - value);
+    if (input === BalanceInput.income) {
+      setTotal(total + value);
+      setIncomes(incomes + value);
+    } else {
+      setTotal(total - value);
+      setExpenses(expenses + value);
+    }
   };
 
   return (
-    <BalanceContext.Provider value={{ updateBalance, total }}>
+    <BalanceContext.Provider
+      value={{ updateBalance, total, incomes, expenses }}
+    >
       {children}
     </BalanceContext.Provider>
   );
