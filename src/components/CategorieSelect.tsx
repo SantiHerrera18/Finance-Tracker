@@ -1,9 +1,13 @@
 import { items } from "@/helpers/categories";
 import capitalizeFirstLetter from "@/helpers/FirstToUpperCase";
 import { BalanceInput } from "@/interfaces/forms";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const Dropdown: React.FC<{ inputType: BalanceInput }> = ({ inputType }) => {
+const Dropdown: React.FC<{
+  inputType: BalanceInput;
+  getSelectionValue: (data: string) => void;
+  submited: boolean;
+}> = ({ inputType, getSelectionValue, submited }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
 
@@ -15,6 +19,11 @@ const Dropdown: React.FC<{ inputType: BalanceInput }> = ({ inputType }) => {
     setSelectedItem(item);
     setIsOpen(false);
   };
+
+  useEffect(() => {
+    if (submited) setSelectedItem(null);
+    getSelectionValue(selectedItem as string);
+  }, [selectedItem, submited]);
 
   return (
     <div className="relative inline-block ">

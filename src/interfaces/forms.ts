@@ -5,6 +5,7 @@ export interface LoginForm {
 
 export interface MainForm {
   inputData: string;
+  categorie: string;
 }
 
 export enum BalanceInput {

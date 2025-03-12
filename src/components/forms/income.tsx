@@ -5,7 +5,11 @@ import Dropdown from "../CategorieSelect";
 
 const Income = () => {
   const [inputType, setInputType] = useState<BalanceInput>(BalanceInput.income);
-  const [formData, setFormData] = useState<MainForm>({ inputData: "" });
+  const [submited, setSubmited] = useState(false);
+  const [formData, setFormData] = useState<MainForm>({
+    inputData: "",
+    categorie: "",
+  });
   const { updateBalance } = useBalanceContext();
 
   const handleClick = (value: BalanceInput) => {
@@ -20,9 +24,13 @@ const Income = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log(formData);
-    setFormData({ inputData: "" });
-
+    setFormData({ inputData: "", categorie: "" });
+    setSubmited(true);
     updateBalance(parseInt(formData.inputData, 10), inputType);
+  };
+
+  const handleDropdown = (value: string) => {
+    setFormData({ ...formData, categorie: value });
   };
 
   return (
@@ -59,7 +67,11 @@ const Income = () => {
             onChange={handleChange}
           />
         </div>
-        <Dropdown inputType={inputType} />
+        <Dropdown
+          inputType={inputType}
+          getSelectionValue={handleDropdown}
+          submited={submited}
+        />
         <button>Enter</button>
       </form>
     </div>
