@@ -6,6 +6,10 @@
   text-align: center;
 }
 
+body {
+  padding: 0 12px;
+}
+
 input {
   border: 1px solid #fff;
   padding: 4px 8px;
@@ -18,4 +22,52 @@ button {
 
 ul li {
   padding: 8px;
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 12px;
+}
+
+.div1 {
+  grid-column: span 2 / span 2;
+  grid-row: span 2 / span 2;
+}
+
+.div4 {
+  grid-column: span 2 / span 2;
+  grid-row: span 3 / span 3;
+  grid-column-start: 1;
+  grid-row-start: 3;
+}
+
+.div5 {
+  grid-row: span 3 / span 3;
+  grid-column-start: 3;
+  grid-row-start: 3;
+  background-color: slategray;
+}
+
+.div6 {
+  grid-row: span 2 / span 2;
+  grid-column-start: 3;
+  grid-row-start: 1;
+  background-color: slategray;
+}
+
+.div7 {
+  grid-column: span 2 / span 2;
+  grid-column-start: 4;
+  grid-row-start: 1;
+  background-color: slategray;
+}
+
+.div8 {
+  grid-column: span 2 / span 2;
+  grid-row: span 4 / span 4;
+  grid-column-start: 4;
+  grid-row-start: 2;
+  background-color: slategray;
 }

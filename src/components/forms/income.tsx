@@ -34,7 +34,7 @@ const Income = () => {
   };
 
   return (
-    <div className="bg-slate-500 w-fit p-3 pt-0 mx-auto">
+    <div className="bg-slate-500  p-3 pt-0 w-full h-full rounded-2xl">
       <div className="flex justify-between">
         <button
           onClick={() => {
