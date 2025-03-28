@@ -24,7 +24,12 @@ ul li {
   padding: 8px;
 }
 
+input {
+  border-radius: 8px;
+}
+
 .parent {
+  height: 86vh;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(5, 1fr);

@@ -12,3 +12,8 @@ export enum BalanceInput {
   income = "income",
   expense = "expense",
 }
+
+export interface CategorieForm {
+  name: string;
+  categorieType: BalanceInput;
+}

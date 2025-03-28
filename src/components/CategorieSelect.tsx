@@ -4,7 +4,7 @@ import { BalanceInput } from "@/interfaces/forms";
 import { useEffect, useState } from "react";
 
 const Dropdown: React.FC<{
-  inputType: BalanceInput;
+  inputType?: BalanceInput;
   getSelectionValue: (data: string) => void;
   submited: boolean;
 }> = ({ inputType, getSelectionValue, submited }) => {
@@ -43,7 +43,7 @@ const Dropdown: React.FC<{
             <li
               key={index}
               onClick={() => handleSelect(item.name)}
-              className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+              className="px-4 py-2 hover:bg-gray-900 cursor-pointer"
             >
               {capitalizeFirstLetter(item.name)}
             </li>
